@@ -1,0 +1,23 @@
+{
+  "jobs": [
+    {
+      "company": "Google",
+      "title": "FullStack Developer",
+      "exp": "3",
+      "salary": ""
+    },
+    {
+      "company": "Microsoft",
+      "title": "FrontEnd Developer",
+      "exp": "10",
+      "salary": ""
+    },
+    {
+      "company": "Amazon",
+      "title": "Backend Developer",
+      "exp": "5",
+      "salary": ""
+    }
+
+  ]
+}

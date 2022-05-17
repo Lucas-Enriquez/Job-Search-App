@@ -1,0 +1,188 @@
+
+
+.navbar {
+  padding: 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 5vh;
+  z-index: 10;
+  font-size: 1.2rem;
+  box-shadow: 0 3px 2px -2px hsl(0deg 0% 78% / 20%);
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eaeaea;
+
+
+  .burger {
+    height: 28px;
+    width: 32px;
+    display: none;
+  }
+
+  .logo {
+    cursor: pointer;
+    color: rgba(0,0,0,.6);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    :nth-child(3) {
+      font-weight: 700;
+      border-right: 2px solid #b0b0b0;
+      padding-right: 10px;
+    }
+  }
+
+  .logo-text {
+    font-family: $fuenteTres;
+    font-size: 1em;
+  }
+
+
+  .list {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+  }
+
+  .login-list {
+    display: flex;
+    list-style: none;
+    justify-content: end;
+    gap: 10px;
+  }
+
+  .list-items a {
+    color: $fontColorGrey;
+    font-family: $fuenteDos;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: .4s;
+    padding: .5rem 1rem;
+    border: 1px solid #0a66c2;
+    border-radius: 50px;
+    display: block;
+    white-space: nowrap;
+    text-decoration: none;
+    color: rgba(0, 0, 0, .6);
+    
+    &:hover {
+      color: rgba(0, 0, 0, .4);
+      background-color: #0a66c2;
+      color: white;
+    }
+  }
+
+
+  .user-btn_container {
+    position: relative;
+  }
+
+
+  .fa-user {
+    font-size: 1rem;
+    cursor: pointer;
+    color: $fontColorWhite;
+    position: relative;
+    // margin-right: 2em;
+    background-color: $fontColorBlue;
+    padding: 11.5px;
+    border-radius: 50%;
+    transition: .05s;
+
+    &:hover {
+      background-color: lighten($color: $fontColorBlue, $amount: 15%);
+      cursor: pointer;
+    }
+
+    &:active {
+      transform: scale(95%, 95%);
+    }
+  }
+
+
+  .user-menu {
+    background-color: $fontColorWhite;
+    border-radius: 2px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    color: $fontColorBlackDefault;
+    border-radius: 6px 0px 6px 6px;
+    height: 340px;
+    padding: 15px 20px;
+    position: absolute;
+    right: 10%;
+    top: 120%;
+    width: 270px;
+    hr {
+      background-color: $fontColorGrey;
+      border: none;
+      height: 1px;
+      margin-top: 10px;
+    }
+    .user-email {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .display_none {
+    display: none;
+  }
+  .menu_active {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .user-menu__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .user-menu__list a{
+    text-decoration: none;
+
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .logo-icon {
+    margin-right: .5em;
+  }
+
+  .burger {
+    height: 28px;
+    width: 32px;
+    display: none;
+  }
+
+  .layer1,
+  .layer2,
+  .layer3 {
+    background-color: #fefefe;
+    height: 4px;
+    margin-top: 4px;
+    width: 100%;
+    border-radius: 10px;
+  }
+}
+
+.change-theme {
+  background-color: #0a66c2;
+  color: white;
+  padding: 6px 5px;
+  border: none;
+  border-radius: 6px;
+  justify-self: end;
+  font-size: 1rem;
+
+  font-weight: 700;
+  &:hover {
+    background-color: darken($color: #0a66c2, $amount: 10%);
+  }
+}
+
