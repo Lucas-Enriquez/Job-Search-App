@@ -6,9 +6,11 @@ import { ThemeContext } from "../../context/ThemeContext";
 export const Navbar = () => {
   const [dropDownActive, setDropDownActive] = useState(false);
   const { setIsLogged } = useContext(AuthContext);
-  const {theme, setTheme} = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
 
-  const { email } = JSON.parse(localStorage.getItem("isAuth"));
+  const { name, email, role, id } = JSON.parse(
+    localStorage.getItem("userData")
+  );
 
   const handleLogout = () => {
     setIsLogged(false);
@@ -20,7 +22,7 @@ export const Navbar = () => {
 
   useEffect(() => {
     const handler = (e) => {
-      if (e.target.className === 'main') {
+      if (e.target.className === "main") {
         setDropDownActive(false);
       }
     };
@@ -32,12 +34,12 @@ export const Navbar = () => {
   });
 
   const changeTheme = () => {
-    if(theme === 'light') {
-      setTheme('dark');
-    } else if (theme === 'dark') {
-      setTheme('light');
+    if (theme === "light") {
+      setTheme("dark");
+    } else if (theme === "dark") {
+      setTheme("light");
     }
-  }
+  };
 
   return (
     <nav className="navbar">
@@ -68,22 +70,35 @@ export const Navbar = () => {
         </div>
       </div>
 
-        
       <div className="user-btn_container">
         <i
           className="fa-solid fa-user"
           onClick={() => setDropDownActive(!dropDownActive)}
-          ></i>
+        ></i>
         {dropDownActive && (
-          <div ref={menuRef} className="user-menu menu_active animate__animated">
-            <h3 className="user-email">{email}</h3>
+          <div
+            ref={menuRef}
+            className="user-menu menu_active animate__animated"
+          >
+            <h3 className="user-email">{name}</h3>
             <hr />
             <ul className="user-menu__list">
-              <Link to="/login" onClick={handleLogout}>
-                Log out
-              </Link>
-              <button className="change-theme" onClick={() => changeTheme()}>Change Theme</button>
-              
+              <div>
+                <span>{email}</span>
+                <br />
+                <span>Role: {role}</span>
+                <br />
+                <span>ID: {id}</span>
+                <br />
+              </div>
+              <div>
+                <Link to="/login" onClick={handleLogout}>
+                  Log out
+                </Link>
+                <button className="change-theme" onClick={() => changeTheme()}>
+                  Change Theme
+                </button>
+              </div>
             </ul>
           </div>
         )}

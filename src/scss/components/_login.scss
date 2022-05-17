@@ -16,7 +16,7 @@
   flex-basis: 100%;
 
 
-  input {
+  input, select {
     font-size: 16px;
     line-height: 1.5;
     font-weight: 400;
@@ -91,4 +91,13 @@
 
 .register-link {
   color: #0073b1;
+}
+
+.invalid-cred {
+  color: $warningRed;
+  background-color: lighten($color: $warningRed, $amount: 40%);
+  border-radius: 3px;
+  font-weight: 500;
+  text-align: center;
+  padding: 10px;
 }

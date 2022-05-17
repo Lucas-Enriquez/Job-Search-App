@@ -139,10 +139,21 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+
+    span {
+      color: darken($color: $fontColorGrey, $amount: 40%);
+      font-size: 1rem;
+    }
+
+    :nth-child(2) {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   .user-menu__list a{
     text-decoration: none;
+    justify-self: end;
 
 
     &:hover {

@@ -9,16 +9,19 @@ function App() {
   const navigate = useNavigate();
 
   const [registerValues, setRegisterValues] = useState({
-    email: "",
-    password: "",
-  });
+    "name": "",
+    "email": "",
+    "password": "",
+    "role": ""
+});
 
   const [theme, setTheme] = useState('light');
 
   const [isLogged, setIsLogged] = useState(false);
+  
 
   useEffect(() => {
-    if (localStorage.getItem("isAuth") !== null) {
+    if (localStorage.getItem("userToken") !== null) {
       setIsLogged(true);
       navigate("/");
     }
@@ -28,8 +31,7 @@ function App() {
       document.body.classList.remove('dark-mode')
     }
 
-
-  }, [theme]);
+  }, [theme, isLogged]);
 
 
   return (

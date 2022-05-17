@@ -15,16 +15,17 @@ export const AppRouter = () => {
   const navigate = useNavigate();
 
   const { registerValues, setIsLogged } = useContext(AuthContext);
-  const { email, password } = registerValues;
+  const { name, email, password, role } = registerValues;
 
   const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
-    if ((email === "", password === "")) {
+    if ((name === "", email === "", password === "", role === "")) {
       return;
     } else {
-      localStorage.setItem("isAuth", JSON.stringify(registerValues));
-      setIsLogged(true);
+      //! DESCOMENTAR TODO ESTO DESPUÉS
+      // localStorage.setItem("isAuth", JSON.stringify(registerValues));
+      // setIsLogged(true);
     }
   }, [registerValues]);
 

@@ -32,6 +32,7 @@ code {
 .dark-mode * {
   background-color: $fontColorBlackDefault !important;
   color: $fontColorWhite !important;
+  border-color: $fontColorWhite !important;
   transition: .3s;
 }
 
