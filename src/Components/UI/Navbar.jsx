@@ -61,16 +61,17 @@ export const Navbar = () => {
         <div className="menubar">
           <ul className="list">
             <li className="list-items">
-              <a href="#">Home</a>
+            <Link to={"/"} href="#">Home</Link>
             </li>
             <li className="list-items">
-              <a href="#">Jobs</a>
+              { role === 'employer' ? <Link to={"/myoffers"}>My Offers</Link> : <Link to={"/applied"}>Applied Jobs</Link>}
             </li>
           </ul>
         </div>
       </div>
 
       <div className="user-btn_container">
+        {role === 'employer' && <Link className="create-button" to="/create">Create</Link>}
         <i
           className="fa-solid fa-user"
           onClick={() => setDropDownActive(!dropDownActive)}
@@ -92,7 +93,7 @@ export const Navbar = () => {
                 <br />
               </div>
               <div>
-                <Link to="/login" onClick={handleLogout}>
+                <Link to="/auth/login" onClick={handleLogout}>
                   Log out
                 </Link>
                 <button className="change-theme" onClick={() => changeTheme()}>

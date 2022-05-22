@@ -26,7 +26,10 @@ code {
 @import './variables/variables';
 @import './UI/navbar';
 @import './components/login';
+@import './components/home';
 @import './UI/main';
+@import './UI/modal';
+@import './UI/createOffer';
 
 
 .dark-mode * {

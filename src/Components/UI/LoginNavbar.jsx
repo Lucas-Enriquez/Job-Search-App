@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const LoginNavbar = () => {
   return (
@@ -22,10 +23,10 @@ export const LoginNavbar = () => {
       <div className="menubar">
         <ul className="login-list">
           <li className="list-items">
-            <a href="/register">Join Now</a>
+            <Link to="/auth/register">Join Now</Link>
           </li>
           <li className="list-items">
-            <a href="/login">Login</a>
+            <Link to="/auth/login">Login</Link>
           </li>
         </ul>
       </div>

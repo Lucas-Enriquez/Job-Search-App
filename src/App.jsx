@@ -8,38 +8,37 @@ import { ThemeContext } from "./context/ThemeContext";
 function App() {
   const navigate = useNavigate();
 
-  const [registerValues, setRegisterValues] = useState({
-    "name": "",
-    "email": "",
-    "password": "",
-    "role": ""
-});
 
-  const [theme, setTheme] = useState('light');
+
+  const [registerValues, setRegisterValues] = useState({
+    name: "",
+    email: "",
+    password: "",
+    role: "",
+  });
+
+  const [theme, setTheme] = useState("light");
 
   const [isLogged, setIsLogged] = useState(false);
-  
 
   useEffect(() => {
     if (localStorage.getItem("userToken") !== null) {
       setIsLogged(true);
       navigate("/");
     }
-    if(theme === 'dark') {
-      document.body.classList.add('dark-mode');
-    } else if (theme === 'light') {
-      document.body.classList.remove('dark-mode')
+    if (theme === "dark") {
+      document.body.classList.add("dark-mode");
+    } else if (theme === "light") {
+      document.body.classList.remove("dark-mode");
     }
-
   }, [theme, isLogged]);
-
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <AuthContext.Provider
-        value={{ registerValues, setRegisterValues, isLogged, setIsLogged}}
+        value={{ registerValues, setRegisterValues, isLogged, setIsLogged }}
       >
-        <AppRouter/>
+        <AppRouter />
       </AuthContext.Provider>
     </ThemeContext.Provider>
   );

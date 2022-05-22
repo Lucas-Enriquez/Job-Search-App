@@ -28,24 +28,26 @@ export const Register = () => {
     e.preventDefault();
     if(name === '' || email === '' || password === '' || role === '') {
       return
-    }
-    setRegisterValues({ name, email, password, role });
+    } else {
+      await setRegisterValues({ name, email, password, role });
 
-    try {
-      const res = await fetch("https://backendnodejstzuzulcode.uw.r.appspot.com/api/auth/signup", {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
-        body: JSON.stringify(registerValues)
-      })
-      const data = await res.json();
-      console.log(data);
-    } catch (error) {
-      console.log(error);
+      try {
+        const res = await fetch("https://backendnodejstzuzulcode.uw.r.appspot.com/api/auth/signup", {
+          method: 'POST',
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(registerValues)
+        })
+        const data = await res.json();
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
+    
   };
 
   //! OJO!!! Acá voy a hacer un select para los roles

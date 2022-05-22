@@ -1,20 +1,39 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
-import { Navbar } from "../UI/Navbar";
+import { JobCards } from "../UI/Job/JobCards";
 
 export const Home = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
+  const [jobList, setJobList] = useState([]);
+  const token = localStorage.getItem("userToken");
 
-  const {theme, setTheme} = useContext(ThemeContext);
+  const url = "https://backendnodejstzuzulcode.uw.r.appspot.com/api/jobs";
+  const getJobs = async () => {
+    const res = await fetch(url, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+    const data = await res.json();
+    setJobList([...data]);
+  };
+
+  useEffect(() => {
+    getJobs();
+  }, []);
+
 
 
   return (
     <>
-      <Navbar />
-      <main className="main">
         <h1>Available Jobs</h1>
-        <h1>Theme: {theme}</h1>
-
-      </main>
+        <div className="main-grid-container">
+          {jobList.map((job) => {
+            return (
+              <JobCards key={job._id} job={job}/>
+            );
+          })}
+        </div>
     </>
   );
 };

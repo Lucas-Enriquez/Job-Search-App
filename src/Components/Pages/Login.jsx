@@ -42,7 +42,7 @@ export const Login = () => {
 
       if (user !== undefined || token !== undefined) {
         localStorage.setItem("userData", JSON.stringify(user));
-        localStorage.setItem("userToken", JSON.stringify(token));
+        localStorage.setItem("userToken", token);
         setIsLogged(true);
       } else {
         setInvalidCredentials(true);
