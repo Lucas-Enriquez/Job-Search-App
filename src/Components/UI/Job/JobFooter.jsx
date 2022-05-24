@@ -4,8 +4,6 @@ import { JobModal } from "./JobModal";
 export const JobFooter = ({ job }) => {
   const [clickedJob, setClickedJob] = useState(null);
 
-
-
   const handleSelectJob = (selectedJob) => {
     setClickedJob(selectedJob);
   };

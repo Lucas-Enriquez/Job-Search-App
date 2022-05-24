@@ -34,6 +34,8 @@
 
   .logo-text {
     font-family: $fuenteTres;
+    color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
     font-size: 1em;
   }
 
@@ -220,3 +222,55 @@
   }
 }
 
+.fa-bars {
+  display: none;
+  font-size: 2rem;
+  color: rgba(0,0,0,.6);
+  transition: color .3s;
+  cursor: pointer;
+  
+  &:hover {
+    color: rgba(0,0,0,.3);
+  }
+}
+
+.burger-menu {
+  display: none;
+  background-color: #0a66c2;
+  padding: 20px;
+  width: 100vw;
+  height: 200px;
+  a {
+    color: $fontColorWhite;
+    font-size: 1.5rem;
+    text-decoration: none;
+
+    &:hover {
+    text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 545px) {
+  .menubar {
+    display: none;
+  }
+
+  .navbar .user-btn_container {
+    display: none;
+  }
+
+  .fa-bars {
+    display: block;
+    position: relative;
+  }
+
+  .burger-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: absolute;
+    top: 7%;
+  }
+}

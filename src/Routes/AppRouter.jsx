@@ -17,17 +17,15 @@ export const AppRouter = () => {
 
   const [appliedJobs, setAppliedJobs] = useState([]);
 
-
   return (
     <JobsContext.Provider value={{ appliedJobs, setAppliedJobs }}>
       <div className={"App"}>
-
         <Routes>
           <Route
             path="/*"
             element={
               <PrivateRoute>
-                <DashboardRoutes/>
+                <DashboardRoutes />
               </PrivateRoute>
             }
           />

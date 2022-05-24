@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { LoginNavbar } from "../UI/LoginNavbar";
 import working from "../../public/working.svg";
 import { AuthContext } from "../../context/AuthContext";
@@ -24,19 +24,21 @@ export const Register = () => {
     setRole(e.target.value);
   }
 
+  useEffect(() => {
+    setRegisterValues({ name, email, password, role });
+    console.log(registerValues);
+  }, [role])
+
   const handleRegister = async (e) => {
     e.preventDefault();
     if(name === '' || email === '' || password === '' || role === '') {
       return
     } else {
-      await setRegisterValues({ name, email, password, role });
 
       try {
         const res = await fetch("https://backendnodejstzuzulcode.uw.r.appspot.com/api/auth/signup", {
           method: 'POST',
           headers: {
-            'Access-Control-Allow-Origin': '*',
-            Accept: 'application/json',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(registerValues)
@@ -50,7 +52,6 @@ export const Register = () => {
     
   };
 
-  //! OJO!!! Acá voy a hacer un select para los roles
 
   return (
     <>
@@ -76,7 +77,6 @@ export const Register = () => {
             />
             <select onChange={handleRole}>
               <option value="default">Select your role</option>
-              <option value="admin">Admin</option>
               <option value="applicant">Applicant</option>
               <option value="employer">Employer</option>
             </select>

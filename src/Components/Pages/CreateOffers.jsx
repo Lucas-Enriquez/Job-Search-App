@@ -1,20 +1,58 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { countryNames } from "../../helpers/countryNames";
 import useForm from "../../helpers/useForm";
 
 export const CreateOffers = () => {
   const [countries, setcountries] = useState(countryNames);
+  const navigate = useNavigate();
 
   const [values, handleChange] = useForm();
-  
+
   const { id, name, email, role } = JSON.parse(
     localStorage.getItem("userData")
   );
-  // console.log(values.categories.split(","));
 
+  const createOffer = async () => {
+    try {
+      const res = await fetch(
+        "https://backendnodejstzuzulcode.uw.r.appspot.com/api/jobs",
+        {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: "Bearer " + localStorage.getItem("userToken"),
+          },
+          body: JSON.stringify({
+            employer: {
+              id: id,
+              name: name,
+              email: email,
+              role: role,
+            },
+            description: values.description,
+            title: values.title,
+            category: values.categories.split(','),
+            location: {
+              country: values.country,
+              province: values.province,
+              city: values.city,
+            },
+            salary: values.salary,
+          }),
+        }
+      );
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleCreateOffer = (e) => {
     e.preventDefault();
+    createOffer();
   };
 
   return (

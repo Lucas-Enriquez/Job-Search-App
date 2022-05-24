@@ -6,6 +6,7 @@ import { JobTitle } from "./JobTitle";
 export const JobCards = ({ job }) => {
 
 
+
   return (
     <div className="job-card">
       <JobHeader job={job}/>

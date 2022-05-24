@@ -8,6 +8,7 @@
   padding: 0;
   box-sizing: border-box
 }
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -27,16 +28,26 @@ code {
 @import './UI/navbar';
 @import './components/login';
 @import './components/home';
+@import './components/appliedJobs';
 @import './UI/main';
 @import './UI/modal';
 @import './UI/createOffer';
+@import './UI/searchBar';
 
 
 .dark-mode * {
   background-color: $fontColorBlackDefault !important;
   color: $fontColorWhite !important;
-  border-color: $fontColorWhite !important;
   transition: .3s;
+}
+
+.dark-mode {
+
+  .job-card,
+  .applied-job-card,
+  .search-input {
+    border: 1px solid $fontColorWhite;
+  }
 }
 
 .dark-mode .change-theme {

@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem("userToken") !== null) {
       setIsLogged(true);
-      navigate("/");
+      // navigate("/");
     }
     if (theme === "dark") {
       document.body.classList.add("dark-mode");

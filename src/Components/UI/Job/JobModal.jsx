@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import { applyToJob } from "../../../API/applyToJob";
 import { unapplyToJob } from "../../../API/unapplyToJob";
 import { JobsContext } from "../../../context/JobsContext";
@@ -8,9 +7,8 @@ import { CloseIcon } from "../CloseIcon";
 import { JobHeader } from "./JobHeader";
 
 export const JobModal = ({ clickedJob, setClickedJob }) => {
-  const { employer, description, title, category, location, salary, _id } =
-    clickedJob;
-  const { appliedJobs } = useContext(JobsContext);
+  const { _id } = clickedJob;
+  const { appliedJobs, setAppliedJobs } = useContext(JobsContext);
 
   const { role } = JSON.parse(localStorage.getItem("userData"));
 
@@ -23,13 +21,16 @@ export const JobModal = ({ clickedJob, setClickedJob }) => {
       return;
     } else if (role === "applicant") {
       applyToJob(token, _id);
+      setClickedJob(null);
     }
   };
 
   const handleUnapply = () => {
     unapplyToJob(_id, token);
-    navigate("/");
+
+    setClickedJob(null);
   };
+
 
   return (
     <div className="modal-background animate__animated animate__fadeIn animate__faster">
